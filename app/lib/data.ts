@@ -13,6 +13,9 @@ import { unstable_noStore as noStore } from 'next/cache';
 
 export async function fetchRevenue() {
   noStore();
+  await new Promise((resolve) => {
+    setTimeout(resolve, 3000);
+  });
   try {
     const data = await sql<Revenue>`SELECT * FROM revenue`;
     return data.rows;
